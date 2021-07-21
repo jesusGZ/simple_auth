@@ -4,19 +4,18 @@ class Config{
 
   service(){
       return{
-        port1: process.env.MONGO_LOCAL_PORT,
-        port2: process.env.MONGO_EXT_PORT,
-        host: process.env.MONGO_EXT_HOST,
+        port: process.env.PORT,
+        host: process.env.HOST,
       }
   }
 
   mongo(){
       return {
-        dbhost: process.env.MONGO_EXT_DBHOST,
-        dbport: process.env.MONGO_EXT_DBPORT,
-        user: process.env.MONGO_EXT_USER,
-        pass: process.env.MONGO_EXT_PASS,
-        db: process.env.MONGO_EXT_DBNAME,
+        dbhost: process.env.DB_HOST,
+        dbport: process.env.DB_PORT,
+        user: process.env.DB_USER,
+        pass: process.env.DB_PASS,
+        db: process.env.DB_NAME,
       }
   }
 
@@ -24,8 +23,11 @@ class Config{
         return process.env.KEY;
   }
 
-  mCryptKey() {
-    return process.env.KEY
+  configToken(){
+    return {
+        SEED: process.env.SEED,
+        expiration: process.env.expiration,
+    }
   }
 }
 
