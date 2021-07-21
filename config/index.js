@@ -6,6 +6,7 @@ class Config{
       return{
         port: process.env.PORT,
         host: process.env.HOST,
+        version: process.env.VERSION
       }
   }
 
@@ -25,7 +26,7 @@ class Config{
 
   configToken(){
     return {
-        SEED: process.env.SEED,
+        seed: process.env.SEED,
         expiration: process.env.expiration,
     }
   }

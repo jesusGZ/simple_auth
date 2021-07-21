@@ -1,5 +1,6 @@
 const express = require('express');
-const config = require('config');
+const CONFIG = require('../config/index');
+const config = new CONFIG();
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const Usuario = require('../models/usuario_model');
@@ -14,7 +15,7 @@ ruta.post('/', (req, res) => {
                 if(!passwordValido) return res.status(400).json({error:'ok', msj:'Usuario o contraseña incorrecta.'})
                 const jwToken = jwt.sign({
                     usuario: {_id: datos._id, nombre: datos.nombre, email: datos.email}
-                  }, config.get('configToken.SEED'), { expiresIn: config.get('configToken.expiration') });
+                  }, config.configToken().seed, { expiresIn: config.configToken().expiration });
                 //jwt.sign({_id: datos._id, nombre: datos.nombre, email: datos.email}, 'password')
                 res.json({
                     usuario:{
